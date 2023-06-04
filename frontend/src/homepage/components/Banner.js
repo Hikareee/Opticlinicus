@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import headerImg from "../assets/img/header-img.svg";
+import headerImg from "../assets/img/Doctor.png";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
@@ -55,9 +55,9 @@ export const Banner = () => {
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <span className="tagline">Welcome to opticlinicus</span>
-                <h1>{`Hi! I'm Judy`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <span className="tagline">Welcome to OptiClinicus</span>
+                <h1>{`Your Accessible Healthcare for all`} </h1>
+                  <p>OptiClinicus is a cutting-edge telemedicine application that brings accessible and convenient healthcare right to your fingertips. With OptiClinicus, you can easily connect with experienced doctors and healthcare professionals for virtual consultations, receive expert medical advice, and get prescribed medication delivered right to your doorstep. Our user-friendly interface and secure platform ensure a seamless and confidential experience. Whether you're seeking routine check-ups, urgent care, or medication refills, OptiClinicus is here to provide personalized healthcare solutions tailored to your needs. Experience the future of healthcare with OptiClinicus and take control of your well-being anytime, anywhere.</p>
                   <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
               </div>}
             </TrackVisibility>
