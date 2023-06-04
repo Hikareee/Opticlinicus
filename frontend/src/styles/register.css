@@ -1,0 +1,37 @@
+.register {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("login_bg.jpg");
+  }
+  .register__container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #dcdcdc00;
+    padding: 30px;
+  }
+  .register__textBox {
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  .register__btn {
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border: none;
+    color: white;
+    background-color: black;
+    border-radius: 8px;
+  }
+  .register__google {
+    background-color: #4285f4;
+  }
+  .register div {
+    margin-top: 7px;
+  }
+  
