@@ -1,8 +1,10 @@
 import Login from "./components/Login";
 import Register from "./components/Register";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
 import Teleconf from "./components/Teleconf";
 import Home from "./homepage/Home";
+import HomeLoggedIn from "./homepage - Copy/HomeLoggedIn";
+
 function App() {
   return (
     <div className="app">
@@ -12,6 +14,7 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path = "/meet"element={<Teleconf/>}/>
           <Route path = "/" element={<Home />}/>
+          <Route path='/home' element = {<HomeLoggedIn/>}/>
         </Routes>
       </Router>
     </div>

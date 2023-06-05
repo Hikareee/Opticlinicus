@@ -10,7 +10,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
-  signOut,
+  signOut,  
 } from "firebase/auth";
 import {
   getFirestore,
@@ -20,6 +20,8 @@ import {
   where,
   addDoc,
 } from "firebase/firestore";
+import { Navigate } from "react-router-dom";
+import firebase from 'firebase/compat/app';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -52,12 +54,14 @@ const signInWithGoogle = async () => {
         //email: user.email,
         identifier: user.email,
       });
+      
     }
   } catch (err) {
     console.log(err);
     alert(err.message);
   }
 };
+
 
 // username and password
 const logInWithEmailAndPassword = async (email, password) => {

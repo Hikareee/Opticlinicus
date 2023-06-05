@@ -20,10 +20,11 @@ function Login() {
 
     if (user) {
       console.log(user.displayName);
-      navigate("/dashboard");
+      navigate("/home");
     }
     if (error) alert(error);
   }, [error, loading, navigate, user]);
+  
   return (
     <div className="login">
       <Navbar2 />

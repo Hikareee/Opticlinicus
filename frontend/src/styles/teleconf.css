@@ -37,6 +37,7 @@ code {
 
 div .button {
   margin: 0 15px 15px 0;
+  color: purple;
 }
 .video-contain video {
   object-fit: contain;

@@ -20,7 +20,7 @@ function Register() {
   };
   useEffect(() => {
     if (loading) return;
-    if (user) history("/dashboard");
+    if (user) history("/home");
   }, [user, loading, error, history]);
   return (
     <div className="register">
@@ -61,7 +61,7 @@ function Register() {
           Register with Google
         </button>
         <div>
-          Already have an account? <Link to="/">Login</Link> now.
+          Already have an account? <Link to="/Login">Login</Link> now.
         </div>
       </div>
     </div>

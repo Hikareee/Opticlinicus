@@ -97,7 +97,7 @@ export function MeetingDetailsScreen({
       {!iscreateMeetingClicked && !isJoinMeetingClicked && (
         <div className="w-full md:mt-0 mt-4 flex flex-col">
           <div className="flex items-center justify-center flex-col w-full ">
-            <button
+            <button background-color="#9700D4"
               className="w-full bg-purple-350 text-white px-2 py-3 rounded-xl"
               onClick={async (e) => {
                 const meetingId = await _handleOnCreateMeeting();
