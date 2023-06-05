@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate} from "react-router-do
 import Teleconf from "./components/Teleconf";
 import Home from "./homepage/Home";
 import HomeLoggedIn from "./homepage - Copy/HomeLoggedIn";
+import Needs from "./MedicalNeeds/Needs";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path = "/meet"element={<Teleconf/>}/>
           <Route path = "/" element={<Home />}/>
           <Route path='/home' element = {<HomeLoggedIn/>}/>
+          <Route path='medicalneeds' element = {<Needs/>}/>
         </Routes>
       </Router>
     </div>

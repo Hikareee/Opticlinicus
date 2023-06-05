@@ -6,7 +6,9 @@ import 'react-multi-carousel/lib/styles.css';
 import arrow1 from "../assets/img/arrow1.svg";
 import arrow2 from "../assets/img/arrow2.svg";
 import colorSharp from "../assets/img/color-sharp.png"
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect } from "react";
+
 export const Skills = () => {
   const responsive = {
     superLargeDesktop: {
@@ -28,6 +30,35 @@ export const Skills = () => {
     }
   };
 
+  function YPos() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      return("Latitude is :", position.coords.latitude);
+      
+    });
+  }
+  function Xpos() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      return("Longitude is :", position.coords.longitude);
+    });
+  }
+  const longitudeE = Xpos();
+  const latilitititude = YPos();
+  const IWantData = async () => {
+    try{
+      const response = await axios('https://api.geoapify.com/v2/places?categories=healthcare.pharmacy&filter=circle:106.843907,-6.211971,5000&bias=proximity:',{longitudeE},{latilitititude},'&limit=20&apiKey=609b01cdbd5246b091cf2f69356e5318'); 
+      const data = response.data;
+      console.log(response);
+    }
+
+    catch(error){
+      console.log(error.response);
+    }
+  };
+
+  useEffect(()=> {
+    IWantData();
+  },[]);
+                                
   return (
     <section className="skill" id="skills">
         <div className="container">
@@ -38,22 +69,16 @@ export const Skills = () => {
                         <p>What our app offers</p>
                         <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
                             <div className="item">
-                                <Link to="/meet" target="_blank" rel="noreferrer">
-                                <img src={Dispatch} alt="Image" />
-                                <h5>Emergency Response</h5>
-                                </Link>
+                                data
                             </div>
                             <div className="item">
-                                <Link to="/meet" target="_blank" rel="noreferrer">
                                 <img src={Consultation} alt="Image" />
                                 <h5>Medical Consultations</h5>
-                                </Link>
                             </div>
                             <div className="item">
-                                <Link to="/medicalneeds" target="_blank" rel="noreferrer">
                                 <img src={Medicine} alt="Image" />
                                 <h5>Medicinal Needs</h5>
-                                </Link>
+
                             </div>
                         </Carousel>
                     </div>
