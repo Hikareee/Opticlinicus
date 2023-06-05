@@ -25,8 +25,8 @@ function Navbar2(){
             <span className = 'nav-icon'></span>
         </label>
         <ul className = 'menu'>
-            <li><a href = '#'>Home</a></li>
-            <li><a href = '#'>Features</a></li>
+            <li><a href = '/'>Home</a></li>
+            <li><a href = '/#skills'>Features</a></li>
             <li><a href = '#'>About</a></li>
         </ul>
     </nav>
