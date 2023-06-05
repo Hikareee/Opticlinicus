@@ -19,6 +19,7 @@ class Users(Base):
     age = Column(Integer)
     email = Column(String)
     phone = Column(Integer)
+    fullname = Column(String)
     
 class Appointments(Base):
     __tablename__ = "Appointments"

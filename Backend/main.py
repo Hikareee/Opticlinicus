@@ -4,7 +4,7 @@ from fastapi.exceptions import HTTPException
 from fastapi import Request
 import requests
 from pydantic import BaseModel
-
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import jwt
 
 import models
@@ -83,6 +83,11 @@ def getToken():
     if __name__ == '__main__':
         print(getToken())
 
+@app.post('/newToken')
+async def token(form_data: OAuth2PasswordRequestForm = Depends()):
+    return {'access_token':form_data.username + 'token'}
+
+    
 @app.post("/create-meeting")
 def createMeet(request: Request):
     obj = request.get_json()
@@ -200,5 +205,63 @@ def deleteAppo(Appo_id:int, Appo:Appointment, db:Session = Depends(get_db)):
         )
     
     db.query(models.Appointments).filter(models.Appointments.Appo_id == Appo_id).delete()
+    db.commit()
+
+@app.get("/getUser")
+def getUser(db : Session = Depends(get_db())):
+    db.query(models.Users).all()
+
+@app.post("/newUser")
+def newUser(Use:User, db:Session = Depends(get_db)):
+    if models.Users.user_id in Use:
+        return {"error": "Doctors' ID already exists"}
+    User_model = models.Users()
+    User_model.username = Use.username
+    User_model.email = Use.email
+    User_model.fullname = Use.fullname
+    User_model.phone = Use.phone
+    User_model.age = Use.age
+
+    db.add(Use)
+    db.commit()
+
+    return Use
+
+
+app.put("/{user_id}")
+def update_doc(user_id: int, Use: User, db: Session = Depends(get_db)):
+    User_model = db.query(models.Users).filter(
+        models.Users.user_id == user_id).first()
+
+    if  User_model is None:
+        raise HTTPException(
+            status_code=404,
+            detail=f"ID {user_id} : ID was not found"
+        )
+
+    if User_model.fullname != None:
+        User_model.fullname = Use.fullname
+    if User_model.age != None:
+        User_model.age = Use.age
+    if User_model.email != None:
+        User_model.email = Use.email
+    if User_model.phone != None:
+        User_model.phone = Use.phone
+
+    db.add(User_model)
+    db.commit()
+    return Use
+
+
+@app.delete("/{user_id}")
+def delete_doc(user_id: int, db: Session = Depends(get_db)):
+    User_model = db.query(models.Users).filter(
+        models.Users.user_id == user_id).first()
+    if User_model is None:
+        raise HTTPException(
+            status_code=404,
+            details=f"ID {user_id}: Does not exist"
+        )
+    db.query(models.Users).filter(models.Users.user_id == user_id).delete()
     db.commit()
 
