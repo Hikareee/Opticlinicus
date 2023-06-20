@@ -32,7 +32,7 @@ def get_db():
         db.close()
 
 
-origins = ["http://localhost:3000"]
+origins = ["opticlinicus.vercel.app"]
 
 app.add_middleware(
     CORSMiddleware,
