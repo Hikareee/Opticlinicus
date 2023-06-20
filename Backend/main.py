@@ -69,39 +69,39 @@ class Appointment(BaseModel):
     when : datetime
 
 
-@app.get("/get-token")
-def getToken():
-    expiration_in_seconds = 600
-    expiration = datetime.datetime.now() + datetime.timedelta(seconds=expiration_in_seconds)
-    token = jwt.encode(payload={
-        'exp': expiration,
-        'apikey': VIDEOSDK_API_KEY,
-        'permissions': ["allow_join", "allow_mod"],
-    },  key=VIDEOSDK_SECRET_KEY, algorithm="HS256")
-    token = token.decode('UTF-8')
+# @app.get("/get-token")
+# def getToken():
+#     expiration_in_seconds = 600
+#     expiration = datetime.datetime.now() + datetime.timedelta(seconds=expiration_in_seconds)
+#     token = jwt.encode(payload={
+#         'exp': expiration,
+#         'apikey': VIDEOSDK_API_KEY,
+#         'permissions': ["allow_join", "allow_mod"],
+#     },  key=VIDEOSDK_SECRET_KEY, algorithm="HS256")
+#     token = token.decode('UTF-8')
 
-    if __name__ == '__main__':
-        print(getToken())
+#     if __name__ == '__main__':
+#         print(getToken())
 
-@app.post('/newToken')
-async def token(form_data: OAuth2PasswordRequestForm = Depends()):
-    return {'access_token':form_data.username + 'token'}
+# @app.post('/newToken')
+# async def token(form_data: OAuth2PasswordRequestForm = Depends()):
+#     return {'access_token':form_data.username + 'token'}
 
     
-@app.post("/create-meeting")
-def createMeet(request: Request):
-    obj = request.get_json()
-    res = requests.post(VIDEOSDK_API_ENDPOINT + "/api/meetings",
-                        headers={"Authorization": obj["token"]})
-    return res.json()
+# @app.post("/create-meeting")
+# def createMeet(request: Request):
+#     obj = request.get_json()
+#     res = requests.post(VIDEOSDK_API_ENDPOINT + "/api/meetings",
+#                         headers={"Authorization": obj["token"]})
+#     return res.json()
 
-@app.post("/validate-meeting/{meetingId}")
-def validateMeeting(meetingId: str, request:Request):
-    print(meetingId)
-    obj = request.get_json()
-    res = requests.post(VIDEOSDK_API_ENDPOINT + "/api/meetings/" +
-                        meetingId, headers={"Authorization": obj["token"]})
-    return res.json()
+# @app.post("/validate-meeting/{meetingId}")
+# def validateMeeting(meetingId: str, request:Request):
+#     print(meetingId)
+#     obj = request.get_json()
+#     res = requests.post(VIDEOSDK_API_ENDPOINT + "/api/meetings/" +
+#                         meetingId, headers={"Authorization": obj["token"]})
+#     return res.json()
 
 @app.get("/getDoc")
 def getDoc(db: Session = Depends(get_db)):
@@ -208,8 +208,9 @@ def deleteAppo(Appo_id:int, Appo:Appointment, db:Session = Depends(get_db)):
     db.commit()
 
 @app.get("/getUser")
-def getUser(db : Session = Depends(get_db())):
-    db.query(models.Users).all()
+def getUser(db : Session = Depends(get_db)):
+    return db.query(models.Users).all()
+    
 
 @app.post("/newUser")
 def newUser(Use:User, db:Session = Depends(get_db)):

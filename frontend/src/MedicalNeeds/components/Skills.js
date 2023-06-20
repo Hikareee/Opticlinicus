@@ -45,7 +45,7 @@ export const Skills = () => {
   const latilitititude = YPos();
   const IWantData = async () => {
     try{
-      const response = await axios('https://api.geoapify.com/v2/places?categories=healthcare.pharmacy&filter=circle:106.843907,-6.211971,5000&bias=proximity:',{longitudeE},{latilitititude},'&limit=20&apiKey=609b01cdbd5246b091cf2f69356e5318'); 
+      const response = await axios('https://api.geoapify.com/v2/places?categories=healthcare.pharmacy&filter=circle:106.843907,-6.211971,5000&bias=proximity:',{longitudeE},{latilitititude},'&limit=20&apiKey=9c7dfd23c746474fbd8f59aa0d05fa18'); 
       const data = response.data;
       console.log(response);
     }

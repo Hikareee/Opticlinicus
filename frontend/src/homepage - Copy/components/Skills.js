@@ -38,19 +38,19 @@ export const Skills = () => {
                         <p>What our app offers</p>
                         <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
                             <div className="item">
-                                <Link to="/meet" target="_blank" rel="noreferrer">
+                                <Link to="/meet">
                                 <img src={Dispatch} alt="Image" />
                                 <h5>Emergency Response</h5>
                                 </Link>
                             </div>
                             <div className="item">
-                                <Link to="/meet" target="_blank" rel="noreferrer">
+                                <Link to="/meet">
                                 <img src={Consultation} alt="Image" />
                                 <h5>Medical Consultations</h5>
                                 </Link>
                             </div>
                             <div className="item">
-                                <Link to="/medicalneeds" target="_blank" rel="noreferrer">
+                                <Link to="/medicalneeds">
                                 <img src={Medicine} alt="Image" />
                                 <h5>Medicinal Needs</h5>
                                 </Link>
